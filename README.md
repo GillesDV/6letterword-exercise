@@ -1,12 +1,15 @@
 An exercise I did once and later committed. Mostly useful for the TDD improvements. 
 
 Progress I made:
-- First I wrote the **Recursive** StringCombinationFinderRecursive. 
-    This loops over the whole list repeatedly to see if it can find a match. This worked functionally, but was extremely inefficient and took way too long (500+ seconds). NOK
-- Secondly I started the algoritm differently. Starting from the 6-letter words first, and seeing if a match can be found like that. Great execution time ( < 1 second ) but not suuuper readable yet. 
-- Third I started with a TDD approach with a friend, making small, incremental improvements along the way. 
 
-The assignment can be found below. 
+- First I wrote the **Recursive** StringCombinationFinderRecursive.
+    - This loops over the whole list repeatedly to see if it can find a match. This worked functionally, but was extremely inefficient and took way too long (500+ seconds). NOK
+- Secondly I started with a **better algoritm** from scratch. 
+    - Starting from the 6-letter words first, and seeing if a match can be found like that. Great execution time ( < 1 second ) but not suuuper readable yet. Especially after ChatGPT improvements.
+- Third I started with a **TDD** approach with a friend, making small, incremental improvements along the way.
+    - Arguably the most on-point response to what this exercise was designed to probe
+
+The assignment can be found below.
 
 ----
 
