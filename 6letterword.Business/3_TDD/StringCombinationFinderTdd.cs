@@ -1,6 +1,6 @@
 ﻿using _6letterword.Business.Models;
 
-namespace _6letterword.Business.TDD {
+namespace _6letterword.Business.UnitTests {
   public class StringCombinationFinderTdd {
 
     // Verantwoordelijkheden: 
@@ -10,18 +10,28 @@ namespace _6letterword.Business.TDD {
     public List<MatchResult> FindCombinations(List<Combination> validCombinations, List<string> partialWords) {
       var results = new List<MatchResult>();
 
-      foreach (var validWord in validCombinations) 
-        foreach (var firstPartialWord in partialWords) 
-          foreach (var secondPartialWord in partialWords) { // bar   <->     r
-            if (firstPartialWord.Equals(secondPartialWord))               continue;
+      foreach (var validWord in validCombinations) { // foobar
 
-            if (validWord.IsFullyComposedOf(firstPartialWord, secondPartialWord) )            
+        foreach (var firstPartialWord in partialWords) { // foo
+
+          foreach (var secondPartialWord in partialWords) { // bar   <->     r
+            if (firstPartialWord.Equals(secondPartialWord)) {
+              continue;
+            }
+
+            if (validWord.IsFullyComposedOf(firstPartialWord, secondPartialWord) ){
+            
               results.Add(new MatchResult {
                 CompleteWord = validWord.Value,
                 PartsOfCompleteWord = new List<string> { firstPartialWord, secondPartialWord }
               });
 
+            }
+
           }
+
+        }
+      }
 
       return results;
     }
