@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using _6letterword.Business.Models;
+﻿using _6letterword.Business.Models;
 
 namespace _6letterword.Business.UnitTests.TDD {
   public class StringCombinationFinderTddUnitTests {
@@ -15,7 +10,6 @@ namespace _6letterword.Business.UnitTests.TDD {
       // Arrange
       var partialWords = new List<string> {
         "abc", "def",
-        //"ab", "cd", "ef",
         "foo", "bar", "imtoolongignoreme"
       };
 
@@ -25,22 +19,43 @@ namespace _6letterword.Business.UnitTests.TDD {
 
       // Act
       var wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);
-      
+
       // Assert
       Assert.Equal(2, wordEntities.Count);
 
-      Assert.Collection(wordEntities,
-          we => {
-            Assert.Equal("abcdef", we.CompleteWord);
-            Assert.All(new[] { "abc", "def", },
-          part => Assert.Contains(part, we.PartsOfCompleteWord));
-          },
-          we => {
-            Assert.Equal("foobar", we.CompleteWord);
-            Assert.All(new[] { "foo", "bar" },
-          part => Assert.Contains(part, we.PartsOfCompleteWord));
-          }
-      );
+      Assert.Contains(wordEntities, item => item.CompleteWord == "abcdef" &&
+        item.PartsOfCompleteWord.Contains("abc") &&
+        item.PartsOfCompleteWord.Contains("def"));
+      Assert.Contains(wordEntities, item => item.CompleteWord == "foobar" &&
+        item.PartsOfCompleteWord.Contains("foo") &&
+        item.PartsOfCompleteWord.Contains("bar"));
+
+    }
+
+    [Fact]
+    public void Given_SimpleValid6WordInput_When_FindCombinations_ReturnsValidCombinations() {
+      // Arrange
+      var partialWords = new List<string> {
+        "a", "b", "c", "e", "f", "d"
+      };
+
+      var validCombinations = new List<Combination> {
+        new Combination("abcdef")
+      };
+
+      // Act
+      var wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);
+
+      // Assert
+      Assert.Single(wordEntities);
+      Assert.Contains(wordEntities, item => item.CompleteWord == "abcdef" &&
+        item.PartsOfCompleteWord.Contains("a") &&
+        item.PartsOfCompleteWord.Contains("b") &&
+        item.PartsOfCompleteWord.Contains("c") &&
+        item.PartsOfCompleteWord.Contains("d") &&
+        item.PartsOfCompleteWord.Contains("e") &&
+        item.PartsOfCompleteWord.Contains("f"));
+
     }
 
     [Fact]
@@ -72,7 +87,7 @@ namespace _6letterword.Business.UnitTests.TDD {
 
       // Act
       var wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);
-      
+
       // Assert
       Assert.Empty(wordEntities);
     }

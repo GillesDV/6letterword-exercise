@@ -9,6 +9,7 @@ internal class Program {
     // Register DI. Would usually be somewhere else
     HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
         builder.Services.AddScoped<IStringCombinationFinder, StringCombinationFinder>();
+        builder.Services.AddScoped<IStringCombinationFinderTdd, IStringCombinationFinderTdd>();
     using IHost host = builder.Build();
 
     var allTextEntries = File.ReadAllText("input.txt").Split("\n").ToList();
