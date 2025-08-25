@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _6letterword.Business.Models;
-using _6letterword.Business.TDD;
 
 namespace _6letterword.Business.UnitTests.TDD {
   public class StringCombinationFinderTddUnitTests {
@@ -20,8 +19,8 @@ namespace _6letterword.Business.UnitTests.TDD {
         "foo", "bar", "imtoolongignoreme"
       };
 
-      var validCombinations = new List<string> {
-        "abcdef", "foobar", "yyyyyy"
+      var validCombinations = new List<Combination> {
+        new Combination("abcdef"), new Combination("foobar"), new Combination("yyyyyy")
       };
 
       // Act
@@ -51,8 +50,8 @@ namespace _6letterword.Business.UnitTests.TDD {
         "abc", "f"
       };
 
-      var validCombinations = new List<string> {
-        "abcdef",
+      var validCombinations = new List<Combination> {
+        new Combination("abcdef"),
       };
 
       // Act
@@ -69,7 +68,7 @@ namespace _6letterword.Business.UnitTests.TDD {
         "a", "b", "c", "d", "e", "f",
         "fo", "o", "bar", "imtoolongignoreme"
       };
-      var validCombinations = new List<string>();
+      var validCombinations = new List<Combination>();
 
       // Act
       var wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);

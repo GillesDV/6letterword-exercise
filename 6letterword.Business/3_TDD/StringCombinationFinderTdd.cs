@@ -1,7 +1,7 @@
 ﻿using _6letterword.Business.Models;
 
 namespace _6letterword.Business.UnitTests {
-  public class StringCombinationFinderTdd {
+  public class StringCombinationFinderTdd { // TODO add interface
 
     // Verantwoordelijkheden: 
     // * zoek achter combinaties
@@ -15,15 +15,15 @@ namespace _6letterword.Business.UnitTests {
         foreach (var firstPartialWord in partialWords) { // foo
 
           foreach (var secondPartialWord in partialWords) { // bar   <->     r
-            if (firstPartialWord.Equals(secondPartialWord)) {
+            if (firstPartialWord.Equals(secondPartialWord, StringComparison.InvariantCultureIgnoreCase)) {
               continue;
             }
 
-            if (validWord.IsFullyComposedOf(firstPartialWord, secondPartialWord) ){
-            
+            if (validWord.IsFullyComposedOf(firstPartialWord, secondPartialWord)) {
+
               results.Add(new MatchResult {
                 CompleteWord = validWord.Value,
-                PartsOfCompleteWord = new List<string> { firstPartialWord, secondPartialWord }
+                PartsOfCompleteWord = [firstPartialWord, secondPartialWord]
               });
 
             }
@@ -36,7 +36,5 @@ namespace _6letterword.Business.UnitTests {
       return results;
     }
 
-    public bool IsCombinationComplete(string combination, List<string> validCombinations) {
-      return validCombinations.Contains(combination);
-    }
+  }
 }
