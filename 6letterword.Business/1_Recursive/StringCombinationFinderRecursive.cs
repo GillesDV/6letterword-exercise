@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace _6letterword.Business;
+namespace _6letterword.Business.Recursive;
 
 public class StringCombinationFinderRecursive {
 

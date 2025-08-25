@@ -1,6 +1,8 @@
-﻿namespace _6letterword.Business.UnitTests;
+﻿using _6letterword.Business.Recursive;
 
-public class StringCombinationFinderUnitTests
+namespace _6letterword.Business.UnitTests;
+
+public class StringCombinationFinderRecursiveUnitTests
 {
     private readonly StringCombinationFinderRecursive stringCombinationFinder;
 
@@ -35,7 +37,7 @@ public class StringCombinationFinderUnitTests
             }
         };
 
-    public StringCombinationFinderUnitTests()
+    public StringCombinationFinderRecursiveUnitTests()
     {
         stringCombinationFinder = new StringCombinationFinderRecursive();
     }

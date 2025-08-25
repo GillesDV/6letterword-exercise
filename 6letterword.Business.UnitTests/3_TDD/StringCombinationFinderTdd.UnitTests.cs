@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _6letterword.Business.Models;
+using _6letterword.Business.TDD;
 
-namespace _6letterword.Business.UnitTests {
+namespace _6letterword.Business.UnitTests.TDD {
   public class StringCombinationFinderTddUnitTests {
 
     private readonly StringCombinationFinderTdd _stringCombinationFinder;
@@ -24,7 +25,7 @@ namespace _6letterword.Business.UnitTests {
       };
 
       // Act
-      List<MatchResult> wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);
+      var wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);
       
       // Assert
       Assert.Equal(2, wordEntities.Count);
@@ -55,7 +56,7 @@ namespace _6letterword.Business.UnitTests {
       };
 
       // Act
-      List<MatchResult> wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);
+      var wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);
 
       // Assert
       Assert.Empty(wordEntities);
@@ -71,7 +72,7 @@ namespace _6letterword.Business.UnitTests {
       var validCombinations = new List<string>();
 
       // Act
-      List<MatchResult> wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);
+      var wordEntities = _stringCombinationFinder.FindCombinations(validCombinations, partialWords);
       
       // Assert
       Assert.Empty(wordEntities);
